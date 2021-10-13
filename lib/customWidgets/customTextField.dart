@@ -6,7 +6,7 @@ import '../constants.dart';
 class customTextFieldWdg extends StatelessWidget {
   final String hint;
   final IconData icon;
-  // final Function onClick;
+  final void Function(String?)? onClick;
   String _errorMessage(String str)
   {
     switch(hint){
@@ -17,7 +17,7 @@ class customTextFieldWdg extends StatelessWidget {
     return '';
     
   }
-  const customTextFieldWdg({required this.icon, required this.hint, /*required this.onClick */});
+  const customTextFieldWdg({required this.icon, required this.hint, required this.onClick });
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,7 +29,7 @@ class customTextFieldWdg extends StatelessWidget {
           }
         },
         obscureText: hint=="Enter your password" ? true: false ,
-        // onSaved: onClick(),
+        onSaved: onClick,
         cursorColor: kColorMain,
         decoration: InputDecoration(
           hintText: hint,
